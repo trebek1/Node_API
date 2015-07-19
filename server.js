@@ -3,6 +3,7 @@
 // BASE SETUP
 // =============================================================================
 
+
 // call the packages we need
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
@@ -12,6 +13,11 @@ var bodyParser = require('body-parser');
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Define the model
+var mongoose   = require('mongoose');
+mongoose.connect('mongodb://computer:password@ds059672.mongolab.com:59672/test'); // connect to our database
+var Bear     = require('./app/models/bear');
 
 var port = process.env.PORT || 8080;        // set our port
 
